@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class FavouriteFilme extends Component {
+class FavouriteMovie extends Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +26,7 @@ class FavouriteFilme extends Component {
       },
       body: JSON.stringify(this.state)
     };
-    const url = " https://post-a-form.herokuapp.com/api/movies";
+    const url = "https://post-a-form.herokuapp.com/api/movies/";
     fetch(url, config)
       .then((res) => res.json())
       .then((res) => {
@@ -38,7 +38,7 @@ class FavouriteFilme extends Component {
       })
       .catch((e) => {
         console.error(e);
-        alert("There was an error when adding the Movie.");
+        alert("There was an error when adding the movie.");
       });
   };
 
@@ -50,21 +50,22 @@ class FavouriteFilme extends Component {
         <form onSubmit={this.submitForm}>
           <fieldset>
             <legend>Information</legend>
+
             <div className="form-data">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="title">Title</label>
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="title"
+                name="title"
                 onChange={this.onChange}
-                value={this.state.name}
+                value={this.state.title}
               />
             </div>
 
             <div className="form-data">
-              <label htmlFor="poster">Poster</label>
+              <label htmlFor="poster">Url</label>
               <input
-                type="url"
+                type="text"
                 id="poster"
                 name="poster"
                 onChange={this.onChange}
@@ -74,7 +75,7 @@ class FavouriteFilme extends Component {
 
             <div className="form-data">
               <label htmlFor="comment">Comment</label>
-              <input
+              <textarea
                 type="text"
                 id="comment"
                 name="comment"
@@ -93,4 +94,4 @@ class FavouriteFilme extends Component {
   }
 }
 
-export default FavouriteFilme;
+export default FavouriteMovie;
